@@ -1,6 +1,6 @@
 # cgibbs.jl
 
-Companion Julia module for LIEB R package
+Companion Julia module for CLIMB R package
 
 **NOTE: this package was developed in Julia v1.0.2, and likely is not back-compatible with older versions**
 
@@ -32,7 +32,7 @@ Test Summary:            | Pass  Total
 unbiased random matrices |   11     11
 Test Summary:                         | Pass  Total
 0 and 1 constraints correctly imposed |    7      7
-   Testing ptgibbs tests passed 
+   Testing cgibbs tests passed 
 ```
 
 
