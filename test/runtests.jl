@@ -4,19 +4,19 @@ import cgibbs: run_mcmc
 import StatsBase: rle
 import RLEVectors: rep
 import DataFrames: DataFrame, colwise, categorical!
+import Random: seed!
 
 using Test
 using LinearAlgebra
 using Lazy
 using Distributions
-using Random
 
 """
 These are tests for the metropolis-within-gibbs sampler
 """
 
 # Set seed
-Random.seed!(1);
+seed!(1);
 
 # Instantiate parameters for test model
 nw = 1; # number of walkers per temp
