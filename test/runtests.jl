@@ -3,7 +3,7 @@ using cgibbs
 import cgibbs: run_mcmc
 import StatsBase: rle
 import RLEVectors: rep
-import DataFrames: DataFrame
+import DataFrames: DataFrame, categorical!
 import Random: seed!
 
 using Test
@@ -26,7 +26,6 @@ mu1 = [0,0];
 mu2 = [4,4];
 mu3 = [-2.5,6];
 labels = ["11", "22", "02"]
-#labs = hcat([(parse.(Int64, split(x, "")) .- 1) for x in labels])
 sig1 = Matrix{Float64}(I,dm,dm)
 sig2 = Matrix{Float64}(I,dm,dm)*1.2 .+ .7
 sig3 = reshape([.85, -.6, -.6,.95], (2,2))
@@ -239,13 +238,6 @@ otest2 = isequal.(
         ]; digits = 6),
         [0, 0, 0, 1]  .* nu
 )
-
-#@testset "unbiased random vectors" begin
-        #[@test x for x in mvn_meantest1]
-        #[@test x for x in mvn_meantest2]
-        #[@test x for x in mvn_covtest1]
-        #[@test x for x in mvn_covtest2]
-#end
 
 @testset "unbiased random matrices" begin
         [@test x for x in meantest1]
