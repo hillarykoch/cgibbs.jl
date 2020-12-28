@@ -39,12 +39,11 @@ function make_gibbs_update(dat::DataFrame, param::Array, hyp::Tuple, alpha::Arra
         @inbounds nz[rles[1]] = rles[2]
 
         # xbar is an array of d dictionaries
-        #xbar = @views colwise(x -> tapply_mean(z[i], x), dat)
         xbar = @views mapcols(x -> tapply_mean(z[i], x), dat)
         for m in 1:nm
             if nz[m] >= dm
                 # Compute this only once because it gets reused a lot here
-                xbarmap = map(x -> x[m], xbar)
+                xbarmap = map(x -> x[m], eachcol(xbar))
 
                 # Extract the current estimate for Sigma for this cluster
                 Sigma_hat = get(NIW[i,1][m], "Sigma", 0)
@@ -387,3 +386,4 @@ function run_mcmc(dat::DataFrame,
 end
 
 end # end the module
+

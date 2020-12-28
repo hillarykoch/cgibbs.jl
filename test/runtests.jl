@@ -3,7 +3,7 @@ using cgibbs
 import cgibbs: run_mcmc
 import StatsBase: rle
 import RLEVectors: rep
-import DataFrames: DataFrame, colwise, categorical!
+import DataFrames: DataFrame
 import Random: seed!
 
 using Test
@@ -78,7 +78,7 @@ end;
 
 nstep = 1000;
 tune_df = rep(1000.0, each = nm)
-chain, acpt_chain, tune_df_chain = run_mcmc(df1[[:x,:y]], param, hyp, alpha, nstep, labels, tune_df);
+chain, acpt_chain, tune_df_chain = run_mcmc(df1[:, [:x,:y]], param, hyp, alpha, nstep, labels, tune_df);
 
 # Process the output
 norm_chain = map(x -> x[1], chain)
