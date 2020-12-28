@@ -1,6 +1,6 @@
 using ProgressMeter
 
-import DataFrames: DataFrame, colwise
+import DataFrames: DataFrame
 
 export tapply_mean
 function tapply_mean(subs, val, sz=(maximum(subs),))

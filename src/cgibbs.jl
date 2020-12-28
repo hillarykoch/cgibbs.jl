@@ -7,7 +7,7 @@ include("plotters.jl")
 
 import StatsBase: rle, pweights
 import RLEVectors: rep
-import DataFrames: DataFrame, colwise
+import DataFrames: DataFrame, mapcols
 
 using Statistics
 using Distributions
@@ -39,7 +39,8 @@ function make_gibbs_update(dat::DataFrame, param::Array, hyp::Tuple, alpha::Arra
         @inbounds nz[rles[1]] = rles[2]
 
         # xbar is an array of d dictionaries
-        xbar = @views colwise(x -> tapply_mean(z[i], x), dat)
+        #xbar = @views colwise(x -> tapply_mean(z[i], x), dat)
+        xbar = @views mapcols(x -> tapply_mean(z[i], x), dat)
         for m in 1:nm
             if nz[m] >= dm
                 # Compute this only once because it gets reused a lot here
