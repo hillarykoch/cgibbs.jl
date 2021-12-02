@@ -3,7 +3,7 @@ using cgibbs
 import cgibbs: run_mcmc
 import StatsBase: rle
 import RLEVectors: rep
-import DataFrames: DataFrame, categorical!
+import DataFrames: DataFrame, transform!
 import Random: seed!
 
 using Test
@@ -48,7 +48,7 @@ dat = hcat(
 
 df1 = @> begin
         DataFrame(dat, [:x, :y, :cluster])
-        @> categorical!(:cluster)
+        @> transform!(:cluster => categorical => :cluster)
 end;
 
 # Select hyperparameters
