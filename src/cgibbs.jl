@@ -295,7 +295,7 @@ function make_mcmc_move(dat::DataFrame,
 
             # i commented this out and changed when trying to debug Xi's issue
             # ll = @inbounds log_likelihood(dat, param, max(nz[m], kappa0[m]), i, m, Matrix(Hermitian(curr_Sigmas[m])), Matrix(Hermitian(Sigma_star)), mu_hats[m])
-            ll = @inbounds log_likelihood(dat, param, kappa0[m], i, m, Matrix(Hermitian(curr_Sigmas[m])), Matrix(Hermitian(Sigma_star)), mu_hats[m])
+            ll = @inbounds log_likelihood(dat, param, nz[m], i, m, Matrix(Hermitian(curr_Sigmas[m])), Matrix(Hermitian(Sigma_star)), mu_hats[m])
 
             # If random uniform small enough, update Sigma to Sigma_star
             if log(rand(Uniform(0,1))[1]) < (ll + lp + lhaste)
