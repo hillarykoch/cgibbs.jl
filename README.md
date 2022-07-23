@@ -2,7 +2,7 @@
 
 Companion Julia module for CLIMB R package
 
-**NOTE: this package was developed in Julia v1.0.2, and likely is not back-compatible with older versions. It has been tested to be compatible with v1.5.3**
+**NOTE: this package was developed in Julia v1.0.2, and likely is not back-compatible with older versions. It has been tested to be compatible with v1.5.3, as well as the experimental (as of 07/23/2022) v1.8.0 for macOS ARM for M-series processors**
 
 ## Installation
 
