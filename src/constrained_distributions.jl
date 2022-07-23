@@ -82,8 +82,8 @@ function rand_constrained_Wish(Psi0, nu, h)
             end
             #llb = min(lb, ub)
             #uub = max(lb, ub)
-            #@inbounds A[pstar,mstar] = rand(Truncated(Normal(), llb, uub))
-            @inbounds A[pstar,mstar] = rand(Truncated(Normal(), lb, ub))
+            #@inbounds A[pstar,mstar] = rand(truncated(Normal(), llb, uub))
+            @inbounds A[pstar,mstar] = rand(truncated(Normal(), lb, ub))
         else
             term1 = 0.0
             for k in 1:(mstar-1)
@@ -127,8 +127,8 @@ function rand_constrained_Wish(Psi0, nu, h)
             end
             #llb = min(lb, ub)
             #uub = max(lb, ub)
-            #@inbounds A[pstar,mstar] = rand(Truncated(Normal(), llb, uub))
-            @inbounds A[pstar,mstar] = rand(Truncated(Normal(), lb, ub))
+            #@inbounds A[pstar,mstar] = rand(truncated(Normal(), llb, uub))
+            @inbounds A[pstar,mstar] = rand(truncated(Normal(), lb, ub))
         end
     end
 
@@ -175,9 +175,9 @@ function rand_constrained_MVN(Sigma, mu0, h)
         end
 
         if subh[i] == 1
-            z[i] = rand(Truncated(Normal(), bound, Inf))
+            z[i] = rand(truncated(Normal(), bound, Inf))
         else
-            z[i] = rand(Truncated(Normal(), -Inf, bound))
+            z[i] = rand(truncated(Normal(), -Inf, bound))
         end
         bound = nothing
     end
